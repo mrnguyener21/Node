@@ -1,0 +1,18 @@
+USERS [...]
+
+USER
+Name Age Password Phone Number
+A      10   123     ...
+B      25   123     {...}
+
+Mongo DB
+Express JS (Routing => building API-s)
+React JS
+Node
+
+api.get();
+
+Create
+Read
+Update
+Destroy
