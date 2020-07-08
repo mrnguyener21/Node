@@ -2,44 +2,40 @@ const express = require('express');
 const { response } = require('express');
 const app = express()
 const port = 5000;
+const bodyParser = require('body-parser');
 
-// A GET route to the / path and return hello bobby
+// Use UUID which we talked about while doing redux.
+// Add a unique ID to each created user before it's added to the "database"
+
+// Make a delete route to /people/:id
+// and remove that user from the "database" - hint db is an array, so just remove it normally.
+
+app.use(bodyParser.json());
+
+const users = [];
+
 app.get('/', (request, response) => {
-    response.send('Hello bobby')
+    console.log('Reached Route /');
+    
+    response.send('Hello Bobby!');
 });
 
-// get route to get a specific person
+app.post('/person', (req, res) => {   
+    const user = req.body;
 
-app.get('/*', (req, res) => {
-    res.send('test')
-    console.log('test');
+    users.push(user);
+    
+    console.log(`User [${user.username}] added to the database.`);
+});
+
+app.get('/people', (req, res) => {
+    console.log(`Users in the database: ${users}`);
+
+    res.send(users);
+});
+
+app.delete('/people', (req, res) => {
+    
 })
 
-// localhost:5000/users/25/books/1
-app.get('/users/:userId/books/:bookId', (req, res) => {
-    const { userId, bookId } = req.params;
-    
-    const usersDb = {
-        25: 'Victor',
-    }
-
-    const bookDb = {
-        1: 'Harry Potter',
-    };
-
-    res.send(`
-        User: ${usersDb[userId]} is reading ${bookDb[bookId]}
-    `);
-});
-
-app.get('/person', (req, res) => {
-    res.send('person')
-});
-
-
 app.listen(port, () => console.log(`Server Running on Port: http://localhost:${port}`));
-
-// Frontend / Client <=> Backend / Server
-
-
-// Route Paramateres

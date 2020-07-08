@@ -16,3 +16,5 @@ Create
 Read
 Update
 Destroy
+
+// when you have [object object] user JSON.stringfy(object);
