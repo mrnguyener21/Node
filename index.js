@@ -46,19 +46,17 @@ app.post('*', (req, res) => {
 
 app.listen(port, () => console.log(`Server Running on Port: http://localhost:${port}`));
 
+// change the username and the age not statically, but rather based on the body sent from the frontend (postman);
+
 app.patch('/people/:id', (req,res) => {
-    // users = users.map((user) => {
-    //     if (user.id === req.params.id) {
-    //         user.age += 1;
-    //     }
-
-    //     return user;
-    // });
-
     const user = users.find((user) => user.id === req.params.id);
+    
+    user.username = req.body.username;
+    user.age = req.body.age;
 
-    user.username = 'something'
-    user.age = 25;
+    console.log(`username has been updated to ${req.body.username}.age has been updated to ${req.body.age}`)
+    // user.username = 'something'
+    // user.age = 25;
 })
 
 // 1	GET
