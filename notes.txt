@@ -18,3 +18,56 @@ Update
 Destroy
 
 // when you have [object object] user JSON.stringfy(object);
+
+
+// 1	GET
+// The GET method is used to retrieve information from the given server using a given URI. Requests using GET should only retrieve data and should have no other effect on the data.
+
+// 2	HEAD
+// Same as GET, but it transfers the status line and the header section only.
+
+// 3	POST
+// A POST request is used to send data to the server, for example, customer information, file upload, etc. using HTML forms.
+
+// 4	PUT
+// Replaces all the current representations of the target resource with the uploaded content.
+
+// { USER } => { USER... }
+
+// 5	DELETE
+// Removes all the current representations of the target resource given by URI.
+
+// 6	CONNECT
+// Establishes a tunnel to the server identified by a given URI.
+
+// 7	OPTIONS
+// Describe the communication options for the target resource.
+
+// 8	TRACE
+// Performs a message loop back test along with the path to the target resource.
+
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH
+
+https://en.wikipedia.org/wiki/Representational_state_transfer
+https://www.restapitutorial.com/
+https://restfulapi.net/
+https://www.smashingmagazine.com/2018/01/understanding-using-rest-api/
+
+https://apifriends.com/api-creation/different-types-apis/
+
+REST(ful API) - Representational State Transfer API
+
+REST
+REST (short for Representational State Transfer) is a web services API. REST APIs are a key part of modern web applications, including Netflix, Uber, Amazon, and many others. For an API to be RESTful, it must adhere to the following rules:
+
+Stateless—A REST API is stateless in nature, Client-Server Architecture
+Uniform Interface—A client and server should communicate with one another via HTTP (HyperText Transfer Protocol) using URIs (Unique Resource Identifiers), CRUD (Create, Read, Update, Delete) and JSON (JavaScript Object Notation) conventions.
+Client-Server—The client and server should be independent of each other. The changes you make on the server shouldn’t affect the client and vice versa.
+Cache—The client should have the ability to cache the responses as this improves the user experience by making them faster and more efficient.
+Layered—The API should support a layered architecture, with each layer contributing to a clear hierarchy. Each layer should be loosely coupled and allow for encapsulation.
+
+https://www.restapitutorial.com/lessons/httpmethods.html
+
+
+https://stoplight.io/blog/crud-api-design/
+https://rapidapi.com/blog/api-glossary/crud/
