@@ -1,34 +1,27 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 import usersRoutes from './routes/users.js'
-
-//index.js is for the setup while separtae files are for specific logic path
 
 const app = express();
 const port = 5000;
 
-var myLogger = function (req, res, next) {
-    console.log('LOGGED')
+app.use(bodyParser.json());
+app.use(cookieParser())
+
+const cookies = (req, res, next) => {
+    console.log('cookie', req.cookies);
     next()
 }
+app.use(cookies);
 
-app.use(myLogger)
-
-app.use(bodyParser.json());
-
-app.use('/people', usersRoutes);
- 
-app.get('/', (request, response) => {  
-    console.log('Reached Route /');
-    
-    response.send('Social Media App');
-});
-
-app.post('*', (req, res) => {
-    console.log('YOU TRIED DOING SOMETHING WITH A ROUTE THAT DOESNT EXIST');
+app.get('/', (req, res) => {
+    res.send('Hello')
 })
 
+app.use('/people', usersRoutes);
+// Create a middleware function that executes on all HTTP METHOD TYPES under the path of '/things'.
+// The middleware should console the type of the http method that was used and forward to action the the next thing.
+
 app.listen(port, () => console.log(`Server Running on Port: http://localhost:${port}`));
-
-
