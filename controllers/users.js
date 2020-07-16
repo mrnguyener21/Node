@@ -12,7 +12,7 @@ export const createUser = (req, res) => {
 
     users.push({...user, id: uuid()});
     
-    console.log(`User [${user.username}] added to the database.`);
+    console.log(`User [${user.username}]  [${user.age}]  added to the database.`);
 };
 
 export const getUser = (req, res) => {

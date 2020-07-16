@@ -1,23 +1,10 @@
 import express from 'express';
 import { getUsers, createUser, getUser, deleteUser, updateUser } from '../controllers/users.js';
 
+
+
 const router = express.Router();
-
 // Set up the "morgan" middleware
-// Create a middleware function that checks whether a post request submitting the user has all the fields set up.
-
-//username: victor
-//password: 123
-//birthday: 
-//enter
-
-const logTime = (req, res, next) => {
-    console.log('Time:', Date.now());
-
-    next();
-}
-
-router.use(logTime);
 
 // READ/GET all users
 router.get('/', getUsers);
