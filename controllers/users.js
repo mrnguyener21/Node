@@ -1,18 +1,25 @@
 import { v4 as uuid } from 'uuid';
 let users = [];
+import User from '../models/User.js';
 
-export const getUsers = (req, res) => {
-    console.log(`Users in the database: ${users}`);
+export const getUsers = async (req, res) => {
+    const users = await User.find();
 
     res.send(users);
 }
 
-export const createUser = (req, res) => {   
-    const user = req.body;
-
-    users.push({...user, id: uuid()});
+export const createUser = async (req, res) => {   
+    const { username, password, age } = req.body;
     
-    console.log(`User [${user.username}]  [${user.age}]  added to the database.`);
+    const createdUser = new User({ username, password, age });
+
+    try {
+        await createdUser.save();
+
+        res.status(201).json({ message: 'User successfully created.' });
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
 };
 
 export const getUser = (req, res) => {
