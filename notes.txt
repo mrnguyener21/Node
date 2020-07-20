@@ -71,3 +71,5 @@ https://www.restapitutorial.com/lessons/httpmethods.html
 
 https://stoplight.io/blog/crud-api-design/
 https://rapidapi.com/blog/api-glossary/crud/
+
+// https://mongoosejs.com/docs/queries.html 

@@ -12,7 +12,7 @@ router.get('/', getUsers);
 router.post('/', createUser);
 
 // READ/GET an individual user
-router.get('/:id', getUser)
+router.get('/:id', getUser);
 
 // DELETE/DELETE an individual user
 router.delete('/:id', deleteUser);

@@ -1,17 +1,23 @@
 import { v4 as uuid } from 'uuid';
-let users = [];
 import User from '../models/User.js';
 
-export const getUsers = async (req, res) => {
-    const users = await User.find();
+// research mongoose email validation
 
-    res.send(users);
+export const getUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+
 }
 
 export const createUser = async (req, res) => {   
-    const { username, password, age } = req.body;
+    const { fullName, username, email, password } = req.body;
     
-    const createdUser = new User({ username, password, age });
+    const createdUser = new User({ fullName, username, email, password });
 
     try {
         await createdUser.save();
@@ -22,21 +28,34 @@ export const createUser = async (req, res) => {
     }
 };
 
-export const getUser = (req, res) => {
-    res.send(req.params.id)
+export const getUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
 };
 
-export const deleteUser = (req, res) => { 
-    console.log(`user with id ${req.params.id} has been deleted`);
-    
-    users = users.filter((user) => user.id !== req.params.id);
+export const deleteUser = async (req, res) => { 
+    try {
+        const user = await User.findByIdAndDelete(req.params.id);
+
+        res.status(204).json(user);
+    } catch(error) {
+        res.status(404).json({ message: error.message });
+    }
 };
 
-export const updateUser =  (req,res) => {
-    const user = users.find((user) => user.id === req.params.id);
-    
-    user.username = req.body.username;
-    user.age = req.body.age;
-
-    console.log(`username has been updated to ${req.body.username}.age has been updated to ${req.body.age}`)
+export const updateUser = async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, { username: 'bob' });
+        
+        res.status(204).json(user);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
 };
+
+// https://mongoosejs.com/docs/queries.html
