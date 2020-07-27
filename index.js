@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 
 import usersRoutes from './routes/users.js'
+import addressRoutes from './routes/address.js'
 
 const app = express();
 const port = 5000;

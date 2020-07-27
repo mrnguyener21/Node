@@ -1,7 +1,4 @@
-import { v4 as uuid } from 'uuid';
 import User from '../models/User.js';
-
-// research mongoose email validation
 
 export const getUsers = async (req, res) => {
     try {
@@ -11,7 +8,6 @@ export const getUsers = async (req, res) => {
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
-
 }
 
 export const createUser = async (req, res) => {   
@@ -49,13 +45,20 @@ export const deleteUser = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
+    const user = req.body;
+
     try {
-        const user = await User.findByIdAndUpdate(req.params.id, { username: 'bob' });
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, user);
         
-        res.status(204).json(user);
+        res.status(204).json(updatedUser);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 };
 
 // https://mongoosejs.com/docs/queries.html
+
+// http://learnmongodbthehardway.com/schema/schemabasics/#:~:text=retrieve%20the%20document.-,One%2DTo%2DMany%20(1%3AN),related%20to%20a%20single%20Blog
+
+// https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/
+// https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/

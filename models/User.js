@@ -21,7 +21,10 @@ const userSchema = mongoose.Schema({
         required: true,
     },
     phoneNumber: Number,
-    address: String,
+    address: {
+        type: Schema.Types.ObjectId,
+        ref: 'Address'
+    },
     createdAt: {
         type: Date,
         default: Date.now
@@ -31,3 +34,4 @@ const userSchema = mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 export default User;
+

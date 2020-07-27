@@ -2,5 +2,11 @@
     "fullName": "Victor",
     "username": "victor123",
     "email": "fakeemail@fakeemail.com",
-    "password": "123123"
+    "password": "123123",
+    "phoneNumber": 123123,
+}
+
+{
+    "street": "100 some road",
+    "city": "Nevermore",
 }
