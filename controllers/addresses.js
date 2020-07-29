@@ -3,13 +3,13 @@ import User from '../models/User.js';
 
 export const getAddresses = async (req, res) => {
     try {
-        
+        // find all addresses in the addresses collection
+        // the process is exactly the same as finding users.
     } catch (error) {
-        
+        res.send(error.message);
     }
 }
 
-// path/:userId
 export const createAddress = async (req, res) => {
     const { street, city } = req.body;
     const { userId } = req.params;
@@ -17,7 +17,8 @@ export const createAddress = async (req, res) => {
     const createdAddress = new Address({ street, city });
 
     try {
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(userId);
+        const updatedUser = await User.findByIdAndUpdate(userId, { address: createdAddress._id } );
 
         await createdAddress.save();
 

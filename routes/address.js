@@ -7,4 +7,6 @@ router.get('/', getAddresses);
 
 router.post('/:userId', createAddress);
 
+// http://localhost:5000/address/5f12ff0cff05565084716abc
+
 export default router;
